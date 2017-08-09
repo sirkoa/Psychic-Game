@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Psychic Game</title>
-
-</head>
-<body>
-<h1>Psychic Game</h1>
-
-
-	
-</body>
-</html>
-<script type="text/javascript">
-	var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l",
+var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l",
     "m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
 
@@ -25,11 +10,11 @@ var guesses = 10;
 
     console.log(computerChoice)
 
+document.getElementById("wins").innerHTML = "Wins: " + wins;
+document.getElementById("losses").innerHTML = "losses: " + losses;
+document.getElementById("guesses").innerHTML = "Guesses left: " + guesses;
 
-
-document.onkeypress = function() {
-    
-
+document.onkeypress = function(event) {
     var userGuess = event.key;
 		
     if(userGuess === computerChoice){
@@ -44,8 +29,5 @@ document.onkeypress = function() {
         losses++
         alert(losses)
     }
-}
-
 
     
-</script>
