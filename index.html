@@ -6,7 +6,11 @@
 
 </head>
 <body>
+
+
 <h1>Psychic Game</h1>
+
+<h2>Guess the letter I'm thinking of</h2>
 
 
 	
@@ -15,7 +19,7 @@
 <script type="text/javascript">
 	var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l",
     "m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-
+    var lettersGuessed;
 
 var wins = 0;
 var losses = 0;
@@ -25,7 +29,11 @@ var guesses = 10;
 
     console.log(computerChoice)
 
+function newGame() { 
+guesses = 10
+computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
 
+}
 
 document.onkeypress = function() {
     
@@ -34,16 +42,25 @@ document.onkeypress = function() {
 		
     if(userGuess === computerChoice){
         wins++;
-        alert(wins)
+        var html = 
+        newGame()
     }else{
         guesses--;
+        lettersGuessed.push(userGuess)
         console.log(guesses)
     }
 
     if(guesses === 0){
         losses++
         alert(losses)
+        newGame()
     }
+    var html =
+          "<p>You chose: " + userGuess + "</p>" +
+          "<p>wins: " + wins + "</p>" +
+          "<p>losses: " + losses + "</p>" +
+          "<p>Letters Guessed: " + lettersGuessed + "</p>";
+          document.querySelector("#wins").innerHTML = html;
 }
 
 
