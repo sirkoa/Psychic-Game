@@ -12,7 +12,7 @@
 
 <h2>Guess the letter I'm thinking of</h2>
 
-
+<div id = "wins"></div>
 	
 </body>
 </html>
@@ -25,13 +25,12 @@ var wins = 0;
 var losses = 0;
 var guesses = 10;
 
-    var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
-
-    console.log(computerChoice)
 
 function newGame() { 
-guesses = 10
+guesses = 10;
+lettersGuessed = [];
 computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
+console.log(computerChoice)
 
 }
 
@@ -52,17 +51,17 @@ document.onkeypress = function() {
 
     if(guesses === 0){
         losses++
-        alert(losses)
         newGame()
     }
     var html =
           "<p>You chose: " + userGuess + "</p>" +
           "<p>wins: " + wins + "</p>" +
           "<p>losses: " + losses + "</p>" +
-          "<p>Letters Guessed: " + lettersGuessed + "</p>";
+          "<p>Guesses Left: " + guesses + "</p>" +
+          "<p>Letters Guessed: " + lettersGuessed.join(", ") + "</p>";
           document.querySelector("#wins").innerHTML = html;
 }
-
+newGame();
 
     
 </script>
